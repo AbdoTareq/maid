@@ -16,7 +16,7 @@ class LocalDataSourceImpl implements LocalDataSource {
 
   @override
   Map<String, dynamic>? read(String key) {
-    return (jsonDecode(box.get(key) as String));
+    return containsKey(key) ? (jsonDecode(box.get(key) as String)) : null;
   }
 
   @override
