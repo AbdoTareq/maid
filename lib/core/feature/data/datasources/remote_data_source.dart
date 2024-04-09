@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:tasks/core/network/network.dart';
@@ -23,10 +21,6 @@ class RemoteDataSource {
   Future<Either<Failure, ServerResponse>> post(
           String endPoint, dynamic body) async =>
       _handleNetworkError(() => network.post(endPoint, body));
-
-  Future<Either<Failure, ServerResponse>> uploadImage(
-          String endPoint, dynamic body, File file) async =>
-      _handleNetworkError(() => network.uploadImage(endPoint, body, file));
 
   Future<Either<Failure, ServerResponse>> patch(
           String endPoint, dynamic body) async =>

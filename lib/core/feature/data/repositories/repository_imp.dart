@@ -1,6 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:io';
-
 import 'package:tasks/core/feature/data/datasources/local_data_source.dart';
 import 'package:tasks/core/feature/data/datasources/remote_data_source.dart';
 import 'package:tasks/export.dart';
@@ -53,18 +50,6 @@ class RepoImp implements Repository {
         if (cashName != null) {
           localDataSource.write(cashName, serverResponse.data ?? {});
         }
-        return right(serverResponse.data);
-      },
-    );
-  }
-
-  @override
-  Future<Either<Failure, Map<String, dynamic>?>> uploadImage(
-      String endPoint, Map? data, File file) async {
-    final res = await remoteDataSource.uploadImage(endPoint, data, file);
-    return res.fold(
-      (failure) => left(failure),
-      (serverResponse) {
         return right(serverResponse.data);
       },
     );
